@@ -196,9 +196,9 @@ export function openHelp() {
 export function openCredits() {
   U.openModal('Credits', body => {
     for (const p of [
-      '*BarbarAIn* — a sword-and-sorcery text adventure RPG.',
+      '*BarbarAIn* — a sword-and-sorcery text adventure RPG. An idea by Rich Conlan.',
       'An original story set in the Hyborian Age created by Robert E. Howard (1906–1936). Brannoc and every character in this game are original.',
-      'Made with gamegen. Art generated with OpenAI image models and Google Gemini; music and sound generated with ElevenLabs.',
+      'Made by Claude Code with gamegen. Art generated with OpenAI image models and Google Gemini; music and sound generated with ElevenLabs.',
       'Fonts: Metal Mania (Open Font License), Alegreya by Huerta Tipográfica (Open Font License), Pixelify Sans (Open Font License).',
       'Thanks for playing. Crom does not care, but we do.',
     ]) body.append(el('p', { html: p.replace(/\*([^*]+)\*/g, '<em>$1</em>') }));

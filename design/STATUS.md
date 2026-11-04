@@ -24,7 +24,7 @@ We want to make a modern-leaning text adventure. It should describe scenes and l
 - Rounds: 2
 - 3D: no
 - Folder: /workspaces/gg-test3 (was empty)
-- Credit: none (publish.sh credit: not known)
+- Credit: Rich Conlan (from GAMEGEN_CREDIT; confirmed when publishing)
 - ElevenLabs tier: paid (item-get generated at mp3_44100_128). Note: a 429 said 2 concurrent requests (the free-tier limit), so the credits mention ElevenLabs anyway.
 - Available: imagegen2 (OpenAI ok), nanogen (Gemini ok), anim8gen, audiogen (ElevenLabs ok, restricted key), playwright-cli ok, Pillow installed this run
 
@@ -44,3 +44,6 @@ We want to make a modern-leaning text adventure. It should describe scenes and l
 - imagegen2 medium 1024² measured ≈ 440 output tokens ≈ $0.013 (cheaper than the estimate).
 - Sprites use a smooth LANCZOS downscale + slight sharpen (pixelize default); scenes/portraits use 2×-then-nearest.
 - Palette extended with skin midtones (51 colours).
+
+## Published
+- https://barbarainv6.synapticnoise.com (repo zeveck/barbarain-v6, made public), gallery card "BarbarAIn (v6)" on synapticnoise.com, kept alongside the original BarbarAIn for comparison.
