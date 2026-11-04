@@ -37,6 +37,8 @@ async function boot() {
   $('#modal-close').innerHTML = U.icon('close');
   $('#modal-close').addEventListener('click', () => { sfx('click'); U.closeModal(); });
   $('#modal').addEventListener('click', e => { if (e.target.id === 'modal') U.closeModal(); });
+  // Title links open their page only: keep taps on them away from the game's own handlers.
+  for (const a of document.querySelectorAll('.title-link')) for (const t of ['pointerdown', 'click', 'touchstart']) a.addEventListener(t, e => e.stopPropagation(), { passive: true });
   $('#scene-toggle').innerHTML = U.icon('image');
   const toggleScene = () => { U.ui.sceneSmall = !U.ui.sceneSmall; U.layout(); };
   $('#scene-toggle').addEventListener('click', toggleScene);

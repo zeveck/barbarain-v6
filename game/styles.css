@@ -420,3 +420,15 @@ em { color: var(--gold-l); font-style: italic; }
 /* toasts at the bottom of the story, clear of modal titles */
 #toasts { top: auto; bottom: calc(24px + var(--safe-b)); }
 #game.wide ~ #toasts { bottom: 24px; }
+
+/* title screen: small links in the lower corners (title only, hidden under dialogs and cards) */
+.title-link {
+  position: absolute; z-index: 2; bottom: calc(env(safe-area-inset-bottom) + 10px);
+  font-family: var(--ui); font-size: 13px; line-height: 1; color: var(--dim); text-decoration: none;
+  text-shadow: 0 1px 2px #000; opacity: .7; padding: 6px 6px; margin: -6px;
+}
+#link-site { left: calc(env(safe-area-inset-left) + 12px); }
+#link-gh { right: calc(env(safe-area-inset-right) + 12px); }
+.title-link:hover, .title-link:focus-visible { opacity: 1; color: var(--bone); text-decoration: underline; }
+#app:has(#modal:not(.hidden)) .title-link, #app:has(#card:not(.hidden)) .title-link { display: none; }
+@media (pointer: coarse), (max-width: 600px) { .title-link { font-size: 11px; } }
