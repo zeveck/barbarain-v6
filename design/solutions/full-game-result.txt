@@ -1,0 +1,7 @@
+"PASS room=c5-heart level=20 gold=4276 retries=3
+  ok   flag:c1-done
+  ok   flag:c2-done
+  ok   flag:c3-freed-nine
+  ok   flag:c4-done
+  ok   flag:ending:C"
+done

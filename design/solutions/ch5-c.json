@@ -1,0 +1,37 @@
+{
+ "start": {
+  "chapter": 5,
+  "branch": "nine",
+  "seed": 777
+ },
+ "battle": "auto",
+ "steps": [
+  "go:s",
+  "go:w",
+  "go:s",
+  "thing:kneelers",
+  "back",
+  "go:d",
+  "thing:founders-door",
+  "verb:founders-door:Speak",
+  "choice:melon",
+  "back",
+  "go:s",
+  "thing:mouth-left",
+  "verb:mouth-left:Enter",
+  "confirm:yes",
+  "thing:thoth-body",
+  "back",
+  "go:s",
+  "thing:dragon-heart-nine",
+  "verb:dragon-heart-nine:Let Nine Finish It",
+  "confirm:yes",
+  "continue",
+  "continue"
+ ],
+ "expect": [
+  "flag:c5-dragon-down",
+  "flag:c5-ending-c"
+ ],
+ "stepTimeout": 240000
+}

@@ -1,0 +1,27 @@
+{
+ "start": {
+  "chapter": 5,
+  "branch": "nine",
+  "seed": 2024
+ },
+ "battle": "auto",
+ "steps": [
+  "go:s",
+  "go:w",
+  "go:s",
+  "thing:kneelers",
+  "back",
+  "go:w",
+  "thing:doru",
+  "verb:doru:Talk",
+  "dlg:rank2",
+  "dlg:rank1",
+  "dlg:bye"
+ ],
+ "expect": [
+  "quest:sq-pit>=5",
+  "flag:c5-khalla-beaten",
+  "item:champions-greatsword"
+ ],
+ "stepTimeout": 240000
+}

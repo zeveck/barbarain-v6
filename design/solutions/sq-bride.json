@@ -1,0 +1,42 @@
+{
+ "start": {
+  "chapter": 3,
+  "branch": null,
+  "seed": 1234
+ },
+ "battle": "auto",
+ "stepDelay": 300,
+ "steps": [
+  "thing:quartermaster",
+  "verb:quartermaster:Talk",
+  "dlg:ghost",
+  "dlg:leave",
+  "thing:camp",
+  "verb:camp:Rest",
+  "continue",
+  "back",
+  "thing:ghost-ship",
+  "verb:ghost-ship:Row out",
+  "thing:figurehead",
+  "back",
+  "thing:cabin",
+  "verb:cabin:Open",
+  "thing:morvan",
+  "verb:morvan:Talk",
+  "dlg:who",
+  "dlg:rest",
+  "dlg:leave",
+  "thing:morvan",
+  "verb:morvan:Use",
+  "use:wedding-ring:morvan",
+  "thing:camp",
+  "back"
+ ],
+ "expect": [
+  "quest:sq-bride>=3",
+  "item:redhand-cutlass",
+  "!item:wedding-ring",
+  "!item:love-potion",
+  "!flag:c3-night"
+ ]
+}

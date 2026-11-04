@@ -1,0 +1,91 @@
+== ch1.json
+"PASS room=c2-road level=7 gold=181 retries=0
+  ok   flag:c1-done
+  ok   party:ptahk
+  ok   item:starheart
+  ok   flag:c1-statue-seen
+  ok   quest:e-ledger>=2
+  ok   quest:e-spectacles>=3
+  ok   quest:e-boots>=2"
+== ch2.json
+"PASS room=c3-beach level=10 gold=651 retries=0
+  ok   flag:c2-done
+  ok   party:ilsa
+  ok   item:wedding-ring
+  ok   flag:c2-ptahk-eyes
+  ok   item:valerio-signet"
+== ch3-free.json
+"PASS room=c4-stones level=14 gold=914 retries=0
+  ok   flag:c3-freed-nine
+  ok   !flag:c3-took-vault
+  ok   flag:c3-done
+  ok   !party:ptahk
+  ok   !item:starheart
+  ok   flag:c3-choice-made"
+== ch3-vault.json
+"PASS room=c4-stones level=14 gold=3414 retries=0
+  ok   flag:c3-took-vault
+  ok   !flag:c3-freed-nine
+  ok   item:kingsbane
+  ok   gold>=2900
+  ok   flag:c3-done
+  ok   !party:ptahk"
+== ch4-nine.json
+"PASS room=c5-ruins level=17 gold=2247 retries=0
+  ok   party:nine
+  ok   flag:c4-done
+  ok   item:starheart
+  ok   var:c4-door-word==2"
+== ch4-zelara.json
+"PASS room=c5-ruins level=17 gold=4747 retries=0
+  ok   party:zelara
+  ok   flag:c4-done
+  ok   item:starheart
+  ok   var:c4-door-word==2"
+== ch5-a.json
+"PASS room=c5-heart level=20 gold=1649 retries=0
+  ok   flag:c5-door-open
+  ok   flag:c5-coil-path
+  ok   won:c5-thoth
+  ok   flag:c5-dragon-down
+  ok   flag:c5-ending-a"
+== ch5-b.json
+"PASS room=c5-heart level=20 gold=3014 retries=0
+  ok   flag:c5-dragon-down
+  ok   flag:c5-ending-b"
+== ch5-c.json
+"PASS room=c5-heart level=20 gold=3014 retries=0
+  ok   flag:c5-dragon-down
+  ok   flag:c5-ending-c"
+== full-game.json
+"PASS room=c5-heart level=20 gold=4286 retries=1
+  ok   flag:c1-done
+  ok   flag:c2-done
+  ok   flag:c3-freed-nine
+  ok   flag:c4-done
+  ok   flag:ending:C"
+== sq-arena-ch1.json
+"PASS room=c1-pit level=6 gold=352 retries=0
+  ok   quest:sq-pit>=3
+  ok   item:hyrkanian-bow
+  ok   flag:c1-mirrors-done
+  ok   !flag:c1-done"
+== sq-arena-ch5.json
+"PASS room=c5-pit level=18 gold=2298 retries=0
+  ok   quest:sq-pit>=5
+  ok   flag:c5-khalla-beaten
+  ok   item:champions-greatsword"
+== sq-bride.json
+"PASS room=c3-beach level=11 gold=526 retries=0
+  ok   quest:sq-bride>=3
+  ok   item:redhand-cutlass
+  ok   !item:wedding-ring
+  ok   !item:love-potion
+  ok   !flag:c3-night"
+== sq-witch.json
+"PASS room=c3-beach level=11 gold=674 retries=0
+  ok   quest:sq-witch>=4
+  ok   item:love-potion
+  ok   flag:c2-done
+  ok   item:wedding-ring
+  ok   party:ilsa"

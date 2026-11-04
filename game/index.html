@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BarbarAIn: a sword-and-sorcery text adventure RPG</title>
+<meta name="description" content="Steal a star, cross the sea, outrun a thousand years and kill the dragon between worlds. A 16-bit text adventure RPG of the Hyborian Age, for desktop and phone.">
+<meta name="theme-color" content="#0e0c12">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BarbarAIn">
+<meta property="og:description" content="Steal a star, cross the sea, outrun a thousand years and kill the dragon between worlds. A 16-bit sword-and-sorcery text adventure RPG.">
+<meta property="og:image" content="social-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BarbarAIn: a Cimmerian barbarian above the city of Shadizar under a blue star">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BarbarAIn">
+<meta name="twitter:description" content="A 16-bit sword-and-sorcery text adventure RPG of the Hyborian Age.">
+<meta name="twitter:image" content="social-card.jpg">
+<link rel="preload" href="fonts/MetalMania-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Alegreya.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/PixelifySans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/bg/bg-title.png" as="image">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app" class="booting">
+  <!-- Title -->
+  <section id="title" class="screen" aria-label="Title">
+    <div id="title-art"></div>
+    <div id="title-inner">
+      <h1 id="logo">Barbar<span>AI</span>n</h1>
+      <p id="tagline">Steal a star. Cross the sea. Outrun a thousand years.</p>
+      <div id="title-menu"></div>
+      <p id="title-foot"></p>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <section id="game" class="screen" aria-label="Game">
+    <header id="topbar">
+      <div id="chap-name"></div>
+      <div id="gold"></div>
+      <button id="btn-menu" class="iconbtn" data-act="menu" aria-label="Menu"></button>
+    </header>
+    <div id="main">
+      <div id="left">
+        <div id="scene-wrap">
+          <canvas id="scene" width="320" height="180"></canvas>
+          <div id="scene-fx"></div>
+          <div id="room-label"></div>
+          <div id="speaker"></div>
+          <button id="scene-toggle" class="iconbtn small" data-act="scene-toggle" aria-label="Show or hide the picture"></button>
+        </div>
+        <div id="party"></div>
+        <div id="log" aria-live="polite"></div>
+      </div>
+      <div id="right">
+        <div id="party-wide"></div>
+        <div id="dock">
+          <nav id="tabs"></nav>
+          <div id="dock-body"></div>
+        </div>
+        <form id="cmd" autocomplete="off">
+          <input id="cmd-input" type="text" placeholder="Type a command: look, n, take rope…" aria-label="Command">
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal" class="hidden" role="dialog" aria-modal="true">
+    <div id="modal-panel">
+      <header id="modal-head"><h2 id="modal-title"></h2><button id="modal-close" class="iconbtn" data-act="modal-close" aria-label="Close"></button></header>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <div id="card" class="hidden"></div>
+  <div id="toasts"></div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
