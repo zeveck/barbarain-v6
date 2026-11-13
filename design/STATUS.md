@@ -15,6 +15,12 @@ We want to make a modern-leaning text adventure. It should describe scenes and l
   ▎ maybe three, and one of them should be an arena in Shadizar where you can fight your way up. It should be a big game -- a couple of hours, five or so chapters, with lots to explore. Good luck!
 ```
 
+2. 2026-11-13, run for the owner:
+
+```
+/gamegen --feedback on --publish --no-confirm
+```
+
 ## Settings
 
 - Platform: both (desktop + mobile)
@@ -23,6 +29,7 @@ We want to make a modern-leaning text adventure. It should describe scenes and l
 - Budget: $20
 - Rounds: 2
 - 3D: no
+- Feedback: on ("Report a bug" in the Menu and Settings; Ctrl+Shift+F)
 - Folder: /workspaces/gg-test3 (was empty)
 - Credit: Rich Conlan (from GAMEGEN_CREDIT; confirmed when publishing)
 - ElevenLabs tier: paid (item-get generated at mp3_44100_128). Note: a 429 said 2 concurrent requests (the free-tier limit), so the credits mention ElevenLabs anyway.
@@ -47,3 +54,6 @@ We want to make a modern-leaning text adventure. It should describe scenes and l
 
 ## Published
 - https://barbarainv6.synapticnoise.com (repo zeveck/barbarain-v6, made public), gallery card "BarbarAIn (v6)" on synapticnoise.com, kept alongside the original BarbarAIn for comparison.
+
+## Changes
+- 2026-11-13 `--feedback on`: "Report a bug" (bundled gh-feedback in game/vendor/) in the Menu and in Settings (so also from the title), Ctrl+Shift+F from anywhere (F is not a game key), repo zeveck/barbarain-v6, issue form .github/ISSUE_TEMPLATE/bug.yml. All solutions replayed with no report opened.

@@ -12,6 +12,7 @@ import * as partyData from './data/party-data.js';
 import * as coreItems from './data/core-items.js';
 import * as coreEnemies from './data/core-enemies.js';
 import manifest, { CHAPTER_STARTS } from './content/manifest.js';
+import { reportBlocks } from './report.js';
 
 const CHAPTERS = ['ch1', 'ch2', 'ch3', 'ch4', 'ch5'];
 let contentReady = Promise.resolve();
@@ -50,7 +51,7 @@ async function boot() {
   window.addEventListener('pointerdown', () => unlock(), { capture: true });
   window.addEventListener('keydown', onKey);
   setInterval(() => { if (!document.hidden && $('#game').classList.contains('on')) S.playTime += 1; }, 1000);
-  document.addEventListener('touchmove', e => { if (!e.target.closest('#log, #modal-body, #dock-body, #card .cap, .map')) e.preventDefault(); }, { passive: false });
+  document.addEventListener('touchmove', e => { if (reportBlocks(e)) return; if (!e.target.closest('#log, #modal-body, #dock-body, #card .cap, .map')) e.preventDefault(); }, { passive: false });
 
   // Reveal the title only when its fonts and art are ready, so it appears once and stays put.
   const titleImg = U.img('assets/bg/bg-title.png');
@@ -104,7 +105,7 @@ export function showTitle() {
   if (!audioState().context || audioState().context === 'none') {
     const b = U.button(matchMedia('(pointer: coarse)').matches ? 'Tap to begin' : 'Click to begin', 'title:start', () => { window.removeEventListener('keydown', k); unlock(); preload(SFX); items(); }, 'primary tap-start');
     menu.append(b);
-    function k(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.removeEventListener('keydown', k); unlock(); preload(SFX); items(); } }
+    function k(e) { if (reportBlocks(e)) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.removeEventListener('keydown', k); unlock(); preload(SFX); items(); } }
     window.addEventListener('keydown', k);
   } else items();
 }
@@ -160,6 +161,7 @@ export async function resumeGame() {
 }
 
 function onKey(e) {
+  if (reportBlocks(e)) return;   // the player is typing a bug report
   if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
     if (e.key === 'Escape') e.target.blur();
     return;
@@ -186,6 +188,13 @@ function onKey(e) {
   else if (k === 'm') { e.preventDefault(); openMap(); }
   else if (k === '/' || k === 't') { const i = $('#cmd-input'); if (i && i.offsetParent) { e.preventDefault(); i.focus(); } }
 }
+
+// Ctrl+Shift+F (index.html) pauses the game the usual way before the report opens:
+// the Menu, or Settings in battle (as the menu button does). A story card waits for the player anyway.
+window.reportShortcut = () => {
+  if (!$('#game').classList.contains('on') || U.modalOpen() || !$('#card').classList.contains('hidden')) return;
+  if (B.on) openSettings(); else openMenu();
+};
 
 // ---------- debug hook (for play-testing; reads state and sets up situations) ----------
 window.__game = {

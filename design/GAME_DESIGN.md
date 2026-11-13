@@ -328,6 +328,7 @@ Tullia (`e-tullia`): Temple Cellar, fight 2 `cultist-fanatic` → Tullia's redem
 | Battle | click a command, then a target | 1–9 for commands, then 1–9 for targets, Esc back; A auto, R repeat |
 | Menus | Bag, Party, Journal, Map, Menu buttons | I, P, J, M (map), Esc (menu) |
 | Continue text | Continue button | Space or Enter |
+| Report a bug | Menu or Settings → Report a bug | Ctrl+Shift+F, from anywhere (F is not a game key) |
 
 ### Phone (portrait)
 

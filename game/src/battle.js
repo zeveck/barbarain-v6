@@ -5,6 +5,7 @@ import { el, sleep, clamp } from './util.js';
 import { sfx, playMusic, musicId } from './audio.js';
 import { stats, skillsOf, renderParty, flashMember, floatOnMember, memberName, addXp } from './party.js';
 import { itemDef, itemName, giveItem, takeItem } from './items.js';
+import { reportBlocks } from './report.js';
 
 const SIZE_H = { s: 48, m: 72, l: 100, xl: 140 };
 const SIZE_W = { s: 64, m: 80, l: 100, xl: 150 };
@@ -467,7 +468,7 @@ function chooseAction(id) {
     const keyMenu = opts => {
       if (keyHandler) window.removeEventListener('keydown', keyHandler);
       keyHandler = e => {
-        if (U.modalOpen() || (e.target && e.target.tagName === 'INPUT')) return;
+        if (reportBlocks(e) || U.modalOpen() || (e.target && e.target.tagName === 'INPUT')) return;
         const n = parseInt(e.key, 10);
         if (n >= 1 && n <= opts.length && !opts[n - 1][3]) { e.preventDefault(); opts[n - 1][2](); }
         else if (e.key === 'Escape' || e.key === 'Backspace') { const b = opts.find(o => o[1] === 'back'); if (b) { e.preventDefault(); b[2](); } }

@@ -4,6 +4,7 @@ import * as U from './ui.js';
 import { el, fmtTime } from './util.js';
 import { sfx, setAudio, audioSettings, playMusic } from './audio.js';
 import { B } from './battle.js';
+import { showReport, openReport } from './report.js';
 
 export const SLOTS = ['1', '2', '3'];
 export const ENDINGS = {
@@ -34,6 +35,7 @@ export function openMenu() {
     add('Load game', '', 'menu:load', () => openSaves('load'));
     add('Settings', 'Music, sound, text size, battle speed, easy mode', 'menu:settings', () => openSettings());
     add('How to play', '', 'menu:help', () => openHelp());
+    if (showReport()) add('Report a bug', 'Opens GitHub to finish your report', 'menu:report', () => openReport());
     add('Quit to title', 'Your progress is autosaved', 'menu:title', () => { U.closeModal(); import('./main.js').then(m => m.showTitle()); });
     body.append(g);
   });
@@ -177,7 +179,9 @@ function buildSettings(body) {
   row('Easy mode', 'Weaker foes, more XP. Change any time.', !!S.easy, 'set:easy', v => { S.easy = v; setSetting({ easy: v }); });
   const coarse = matchMedia('(pointer: coarse)').matches;
   if (!coarse) row('Typed commands', 'Show the command line on wide screens', s.typing !== false, 'set:typing', v => setSetting({ typing: v }));
-  if (!coarse) body.append(el('p', { text: 'Keys: arrows or N/E/S/W to move, L look, I bag, P party, J journal, M map, 1–9 for choices, Space to continue, Esc for the menu.', style: { fontSize: '14px', color: 'var(--dim)', marginTop: '12px' } }));
+  if (showReport()) body.append(el('div', { class: 'setting' }, el('div', { class: 'lbl', text: 'Found a bug?' }, el('small', { text: 'Tell us on GitHub (you need an account)' })),
+    U.button('Report a bug', 'set:report', () => openReport())));
+  if (!coarse) body.append(el('p', { text: 'Keys: arrows or N/E/S/W to move, L look, I bag, P party, J journal, M map, 1–9 for choices, Space to continue, Esc for the menu' + (showReport() ? ', Ctrl+Shift+F to report a bug.' : '.'), style: { fontSize: '14px', color: 'var(--dim)', marginTop: '12px' } }));
 }
 
 export function openHelp() {

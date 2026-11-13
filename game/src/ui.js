@@ -1,6 +1,7 @@
 // Layout, scene picture, text log, action dock, modals, cards and toasts.
 import { $, el, richText, sleep, Abort } from './util.js';
 import { sfx, unlock } from './audio.js';
+import { reportBlocks, snapshot, clearShot } from './report.js';
 
 // ---------- icons (one consistent line style) ----------
 const P = {
@@ -317,6 +318,7 @@ export function choose(options, { prompt, tabs = false } = {}) {
       dockAdd(button(lbl, o.act || ('choice:' + i), () => { cleanup(); res(i); }, (o.cls || '') + (options.length === 1 || o.full ? ' full' : ''), o.disabled ? { disabled: true } : {}));
     });
     const keys = e => {
+      if (reportBlocks(e)) return;
       if (document.querySelector('#modal:not(.hidden), #card:not(.hidden)')) return;
       if (e.target && e.target.tagName === 'INPUT') return;
       const n = parseInt(e.key, 10);
@@ -337,6 +339,7 @@ export function continueBtn(label = 'Continue') {
 // ---------- modal ----------
 let modalOnClose = null;
 export function openModal(title, build, onClose) {
+  if ($('#modal').classList.contains('hidden')) snapshot();   // the game pauses: keep a picture of the scene for a bug report
   $('#modal-title').textContent = title;
   const body = $('#modal-body');
   body.innerHTML = '';
@@ -357,6 +360,7 @@ export function closeModal() {
   if ($('#modal').classList.contains('hidden')) return;
   $('#modal').classList.add('hidden');
   $('#modal-body').innerHTML = '';
+  clearShot();
   const f = modalOnClose; modalOnClose = null;
   if (f) f();
 }
@@ -393,7 +397,7 @@ export function showCard({ img: bg, tint, kicker, title, text, list, buttons = [
       card.append(cap);
     }
     const row = el('div', { class: 'btns' });
-    const keys = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(0); } };
+    const keys = e => { if (reportBlocks(e)) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(0); } };
     const cancel = () => { window.removeEventListener('keydown', keys); rej(new Abort()); };
     pending.add(cancel);
     const done = i => { window.removeEventListener('keydown', keys); pending.delete(cancel); card.classList.add('hidden'); card.innerHTML = ''; res(i); };

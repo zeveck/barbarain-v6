@@ -432,3 +432,11 @@ em { color: var(--gold-l); font-style: italic; }
 .title-link:hover, .title-link:focus-visible { opacity: 1; color: var(--bone); text-decoration: underline; }
 #app:has(#modal:not(.hidden)) .title-link, #app:has(#card:not(.hidden)) .title-link { display: none; }
 @media (pointer: coarse), (max-width: 600px) { .title-link { font-size: 11px; } }
+
+/* ---------- "Report a bug" form (gh-feedback) ---------- */
+/* Let the form's text boxes take typing and selection (the page turns both off elsewhere). */
+gh-feedback {
+  -webkit-user-select: text; user-select: text; touch-action: auto;
+  font-family: var(--ui); font-size: 15px;
+  --gh-feedback-bg: #1a1520; --gh-feedback-text: #e9dec4; --gh-feedback-border: #6b3f1c; --gh-feedback-input-bg: #0e0c12;
+}

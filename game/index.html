@@ -84,6 +84,22 @@
   <div id="card" class="hidden"></div>
   <div id="toasts"></div>
 </div>
+<script>
+  // Ctrl+Shift+F opens "Report a bug" from anywhere, even if the game is stuck.
+  // Its own script, before the game's, so an error in the game can't stop it.
+  addEventListener('keydown', (e) => {
+    if (!e.ctrlKey || !e.shiftKey || e.altKey || e.metaKey || e.key.toLowerCase() !== 'f') return;
+    const fb = document.getElementById('report');
+    if (!fb?.getAttribute('repo') || document.activeElement === fb) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    try { window.reportShortcut?.(); } catch {}
+    fb.open();
+  }, true);
+</script>
+<script type="module" src="vendor/gh-feedback.js"></script>
 <script type="module" src="src/main.js"></script>
+<gh-feedback id="report" trigger="none" repo="zeveck/barbarain-v6" template="bug.yml"
+  types="bug,feature" theme="dark" color="#a8622c" popup-color="#a8622c"></gh-feedback>
 </body>
 </html>
