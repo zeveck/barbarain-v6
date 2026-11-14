@@ -57,3 +57,4 @@ We want to make a modern-leaning text adventure. It should describe scenes and l
 
 ## Changes
 - 2026-11-13 `--feedback on`: "Report a bug" (bundled gh-feedback in game/vendor/) in the Menu and in Settings (so also from the title), Ctrl+Shift+F from anywhere (F is not a game key), repo zeveck/barbarain-v6, issue form .github/ISSUE_TEMPLATE/bug.yml. All solutions replayed with no report opened.
+- 2026-11-14 Report a bug: updated to the fixed form (gh-feedback 2026.11.14).
